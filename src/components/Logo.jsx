@@ -1,6 +1,6 @@
 const Logo = ({ size = 46, withWordmark = true }) => {
   return (
-    <a href="#" className="flex items-center gap-3">
+    <a href="/" className="flex items-center gap-3">
       {/* True logo mark: yellow disc, gray MK */}
       <svg
         width={size}

@@ -1,46 +1,29 @@
+import BLOG_POSTS from "./blogPosts.json";
+
 // Shared top-nav configuration used by every page.
-// `href` on a top-level link makes it a real navigation target (hash route);
-// links without one act purely as hover triggers for their sublinks.
+// `href` on a top-level link makes it a real navigation target (path route);
+// `sublinks` render as a hover dropdown.
 export const NAV_LINKS = [
-  {
-    title: "Work",
-    sublinks: [
-      { title: "Expedition", href: "#" },
-      { title: "Automotive", href: "#" },
-      { title: "Industrial", href: "#" },
-      { title: "Cinematography", href: "#" },
-    ],
-  },
+  { title: "Home", href: "/" },
+  // Services lives on the home page — /services renders Home and scrolls to it.
+  { title: "Services", href: "/services" },
   {
     title: "Portfolio",
-    href: "#/portfolio",
+    href: "/portfolio",
+    // Each project jumps straight to its chapter on the portfolio page.
     sublinks: [
-      { title: "Expeditions", href: "#/portfolio?expeditions" },
-      { title: "Automotive", href: "#/portfolio?automotive" },
-      { title: "Cinematography", href: "#/portfolio?cinematography" },
+      { title: "Expeditions", href: "/portfolio/expeditions" },
+      { title: "Automotive", href: "/portfolio/automotive" },
+      { title: "Cinematography", href: "/portfolio/cinematography" },
     ],
   },
   {
-    title: "About",
-    sublinks: [
-      { title: "The Studio", href: "#" },
-      { title: "Our Story", href: "#" },
-    ],
-  },
-  {
-    title: "Services",
-    sublinks: [
-      { title: "Photo Sessions", href: "#" },
-      { title: "Commercial Shoots", href: "#" },
-      { title: "Film Production", href: "#" },
-    ],
-  },
-  {
-    title: "Journal",
-    sublinks: [
-      { title: "Blog", href: "#" },
-      { title: "Behind the Scenes", href: "#" },
-      { title: "Socials", href: "#" },
-    ],
+    title: "Blog",
+    href: "/blog",
+    // Built from the blog JSON so the dropdown stays in sync with the posts.
+    sublinks: BLOG_POSTS.map((post) => ({
+      title: post.navLabel,
+      href: `/blog/${post.id}`,
+    })),
   },
 ];

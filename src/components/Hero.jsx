@@ -61,7 +61,7 @@ const Hero = () => {
             </p>
 
             <a
-              href="#contact"
+              href="/contact"
               className="group mt-9 flex items-center gap-3 rounded-full bg-steel-900 px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-steel-800"
             >
               Book a Session

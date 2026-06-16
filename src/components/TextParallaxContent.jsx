@@ -162,7 +162,7 @@ const ExampleContent = ({ body }) => (
         </p>
       ))}
       <a
-        href="#contact"
+        href="/contact"
         className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-steel-900 px-9 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white transition-colors hover:bg-steel-800 md:w-fit"
       >
         Start a project <FiArrowUpRight className="text-base" />

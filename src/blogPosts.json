@@ -1,0 +1,98 @@
+[
+  {
+    "id": "himalaya",
+    "navLabel": "Himalayan Expedition",
+    "category": "Expeditions",
+    "author": "Mara Klein",
+    "date": "May 2026",
+    "readTime": "6 min read",
+    "title": "Shooting in the cold: lessons from a Himalayan expedition",
+    "description": "Three weeks above 5,000m and what it taught us about gear, patience and light.",
+    "imgUrl": "https://images.unsplash.com/photo-1504610926078-a1611febcad3?q=80&w=1600&auto=format&fit=crop",
+    "content": [
+      "Cold changes everything. Batteries that promise four hundred frames give you eighty, focus rings stiffen, and the only window of usable light arrives for twenty minutes either side of the sun touching the ridgeline. The mountains don't wait, so neither can you.",
+      "We learned to keep a body warm inside the jacket and only bring it out at the moment of the shot. Spare cells lived against the skin. Every lens change became a deliberate, gloved ritual performed with our backs to the wind.",
+      "The reward is a quality of light you cannot fake — thin, clean air that renders distant peaks with impossible clarity. When you've earned the frame at altitude, it shows in the final image."
+    ]
+  },
+  {
+    "id": "automotive",
+    "navLabel": "Rolling Shots",
+    "category": "Automotive",
+    "author": "Devin Roy",
+    "date": "Apr 2026",
+    "readTime": "5 min read",
+    "title": "The art of the rolling shot: automotive cinematography",
+    "description": "How we rig, track and light a car so the metal feels alive in motion.",
+    "imgUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop",
+    "content": [
+      "A great rolling shot is a conversation between three vehicles travelling at exactly the same speed: the hero car, the camera rig, and the lighting truck. Get the spacing wrong by a metre and the reflection you spent an hour building falls apart.",
+      "We pre-light reflections rather than the car itself. The body panel is a mirror, so we're really lighting the world it reflects — gradients, soft sources and the occasional hard kick to catch an edge.",
+      "Speed sells the shot, but control sells the brand. Motion-control rigs let us repeat a pass frame-for-frame until the move is invisible and only the machine remains."
+    ]
+  },
+  {
+    "id": "color-grade",
+    "navLabel": "Color Grading",
+    "category": "Post Production",
+    "author": "Priya Sundar",
+    "date": "Apr 2026",
+    "readTime": "7 min read",
+    "title": "Color grading for mood: our post-production workflow",
+    "description": "Why the grade isn't a filter — it's the final act of direction.",
+    "imgUrl": "https://images.unsplash.com/photo-1492551557933-34265f7af79e?q=80&w=1600&auto=format&fit=crop",
+    "content": [
+      "The grade is where intent becomes emotion. We start by balancing every shot to a neutral baseline so the whole timeline speaks one language, then we build the look on top of that foundation.",
+      "Mood lives in the shadows. A campaign that needs to feel premium gets dense, controlled blacks; a documentary piece keeps detail in the toe so nothing feels manufactured. The choice is editorial, not technical.",
+      "We grade on calibrated monitors and review on the worst screen we can find — because that's where most of the audience will actually watch it."
+    ]
+  },
+  {
+    "id": "aerial",
+    "navLabel": "Aerial Drones",
+    "category": "Aerial",
+    "author": "Tomas Vega",
+    "date": "Mar 2026",
+    "readTime": "4 min read",
+    "title": "Drones above the dunes: aerial storytelling",
+    "description": "FPV and cinematic drones, and knowing which story each one tells.",
+    "imgUrl": "https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=1600&auto=format&fit=crop",
+    "content": [
+      "Aerial isn't just a wide shot from higher up. The right move re-frames the entire story — revealing scale, isolating a subject in a landscape, or chasing energy through a space a crane could never reach.",
+      "Cinematic platforms give us stability and dynamic range for the establishing beat. FPV gives us velocity and intimacy for the moment that needs a pulse. We plan which is which before we ever leave the ground.",
+      "Wind is the director on location. We read it, we wait for it, and occasionally we let it shape a move we'd never have storyboarded."
+    ]
+  },
+  {
+    "id": "industrial",
+    "navLabel": "Industrial Light",
+    "category": "Industrial",
+    "author": "Lena Fischer",
+    "date": "Mar 2026",
+    "readTime": "5 min read",
+    "title": "Lighting the industrial floor without killing the scale",
+    "description": "Making a working plant look heroic while keeping people safe and on schedule.",
+    "imgUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop",
+    "content": [
+      "Industrial spaces are huge, dim and full of mixed light sources that fight each other. The temptation is to flood everything; the better answer is to sculpt pools of light that lead the eye and let the darkness imply scale.",
+      "We shoot around the line, not against it. A production day can't stop the plant, so we choreograph our setups into the gaps and treat the operators as collaborators rather than obstacles.",
+      "The goal is to make the everyday look monumental — to let a brand see its own work the way we see it through the lens."
+    ]
+  },
+  {
+    "id": "storyboard",
+    "navLabel": "Storyboard to Cut",
+    "category": "Cinematography",
+    "author": "Mara Klein",
+    "date": "Feb 2026",
+    "readTime": "6 min read",
+    "title": "From storyboard to final cut: keeping the vision intact",
+    "description": "How an idea survives the journey from a sketch to the screen.",
+    "imgUrl": "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1600&auto=format&fit=crop",
+    "content": [
+      "Every film leaks a little of its original idea at each stage. The storyboard simplifies, the shoot compromises, the edit reshapes. Our whole process is built to keep those losses small and intentional.",
+      "We treat the boards as a contract, not a suggestion. When we deviate on set — and we always do — it's a conscious upgrade, documented so the edit knows why the plan changed.",
+      "By the time the grade is locked, the film should feel inevitable, as though it could never have been anything else. That's the vision arriving intact."
+    ]
+  }
+]

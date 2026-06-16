@@ -3,6 +3,14 @@ import { AnimatePresence, motion } from "motion/react";
 import { FiMenu } from "react-icons/fi";
 import Logo from "./Logo";
 
+// A top link is active when the current path matches its href — exactly for
+// "/", or as a prefix for nested routes (e.g. /portfolio/automotive → Portfolio).
+const isActiveRoute = (href, pathname) => {
+  if (!href) return false;
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+};
+
 const RoundedDrawerNav = ({
   children,
   navBackground = "bg-steel-500",
@@ -19,8 +27,16 @@ const RoundedDrawerNav = ({
     if (!hovered) return [];
     const link = links.find((l) => l.title === hovered);
 
-    return link ? link.sublinks : [];
+    return link && link.sublinks ? link.sublinks : [];
   }, [hovered, links]);
+
+  // Which top link the underline sits under: the hovered one, else the link
+  // matching the current route.
+  const pathname =
+    typeof window !== "undefined" ? window.location.pathname : "/";
+  const activeTitle =
+    links.find((l) => isActiveRoute(l.href, pathname))?.title ?? null;
+  const indicator = hovered ?? activeTitle;
 
   return (
     <>
@@ -36,10 +52,11 @@ const RoundedDrawerNav = ({
               setHovered={setHovered}
               hovered={hovered}
               activeSublinks={activeSublinks}
+              indicator={indicator}
             />
           </div>
           <a
-            href="#contact"
+            href="/contact"
             className="hidden rounded-md bg-brand px-6 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-steel-900 transition-colors hover:bg-brand-dark md:block"
           >
             Contact
@@ -67,7 +84,7 @@ const RoundedDrawerNav = ({
   );
 };
 
-const DesktopLinks = ({ links, setHovered, hovered, activeSublinks }) => {
+const DesktopLinks = ({ links, setHovered, hovered, activeSublinks, indicator }) => {
   return (
     <div className="ml-12 mt-3 hidden md:block">
       <div className="flex gap-8">
@@ -77,14 +94,14 @@ const DesktopLinks = ({ links, setHovered, hovered, activeSublinks }) => {
             setHovered={setHovered}
             title={l.title}
             href={l.href}
-            active={hovered === l.title}
+            showIndicator={indicator === l.title}
           >
             {l.title}
           </TopLink>
         ))}
       </div>
       <AnimatePresence mode="popLayout">
-        {hovered && (
+        {hovered && activeSublinks.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -115,47 +132,66 @@ const MobileLinks = ({ links, open }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="grid grid-cols-2 gap-6 py-6 md:hidden"
+          className="py-6 md:hidden"
         >
-          {links.map((l) => {
-            return (
-              <div key={l.title} className="space-y-1.5">
-                {l.href ? (
-                  <a
-                    href={l.href}
-                    className="block text-xs font-bold uppercase tracking-[0.2em] text-brand transition-colors hover:text-brand-light"
-                  >
-                    {l.title}
-                  </a>
-                ) : (
-                  <span className="block text-xs font-bold uppercase tracking-[0.2em] text-brand">
-                    {l.title}
-                  </span>
-                )}
-                {l.sublinks.map((sl) => (
-                  <a
-                    className="text-md block py-1 font-semibold text-steel-100 transition-colors hover:text-white"
-                    href={sl.href}
-                    key={sl.title}
-                  >
-                    {sl.title}
-                  </a>
-                ))}
-              </div>
-            );
-          })}
+          <div className="grid grid-cols-2 gap-6">
+            {links.map((l) => {
+              return (
+                <div key={l.title} className="space-y-1.5">
+                  {l.href ? (
+                    <a
+                      href={l.href}
+                      className="block text-xs font-bold uppercase tracking-[0.2em] text-brand transition-colors hover:text-brand-light"
+                    >
+                      {l.title}
+                    </a>
+                  ) : (
+                    <span className="block text-xs font-bold uppercase tracking-[0.2em] text-brand">
+                      {l.title}
+                    </span>
+                  )}
+                  {l.sublinks?.map((sl) => (
+                    <a
+                      className="text-md block py-1 font-semibold text-steel-100 transition-colors hover:text-white"
+                      href={sl.href}
+                      key={sl.title}
+                    >
+                      {sl.title}
+                    </a>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+          <a
+            href="/contact"
+            className="mt-6 block rounded-md bg-brand px-6 py-3 text-center text-xs font-bold uppercase tracking-[0.18em] text-steel-900 transition-colors hover:bg-brand-dark"
+          >
+            Contact
+          </a>
         </motion.div>
       )}
     </AnimatePresence>
   );
 };
 
-const TopLink = ({ children, setHovered, title, href, active }) => {
-  const className = `cursor-pointer border-b-2 pb-1 text-sm font-bold uppercase tracking-[0.18em] transition-colors ${
-    active
-      ? "border-brand text-white"
-      : "border-transparent text-steel-100 hover:text-white"
+const TopLink = ({ children, setHovered, title, href, showIndicator }) => {
+  const className = `relative cursor-pointer pb-2 text-sm font-bold uppercase tracking-[0.18em] transition-colors ${
+    showIndicator ? "text-white" : "text-steel-100 hover:text-white"
   }`;
+
+  const inner = (
+    <>
+      {children}
+      {showIndicator && (
+        <motion.span
+          layoutId="nav-underline"
+          className="absolute -bottom-0.5 left-0 right-0 h-[3px] rounded-full bg-brand"
+          transition={{ type: "spring", stiffness: 450, damping: 35 }}
+        />
+      )}
+    </>
+  );
 
   if (href) {
     return (
@@ -164,14 +200,14 @@ const TopLink = ({ children, setHovered, title, href, active }) => {
         onMouseEnter={() => setHovered(title)}
         className={className}
       >
-        {children}
+        {inner}
       </a>
     );
   }
 
   return (
     <span onMouseEnter={() => setHovered(title)} className={className}>
-      {children}
+      {inner}
     </span>
   );
 };

@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import RoundedDrawerNav from "../components/RoundedDrawerNav";
 import { TextParallaxContentExample } from "../components/TextParallaxContent";
 import { NAV_LINKS } from "../navLinks";
+import { useScrollToSection } from "../useScrollToSection";
 
 // Section ids here must match the ids rendered by TextParallaxContentExample.
 const CHAPTERS = [
@@ -10,24 +10,9 @@ const CHAPTERS = [
   { id: "cinematography", label: "Cinematography" },
 ];
 
-const Portfolio = () => {
-  // Dropdown links point at "#/portfolio?<section>" — scroll to that section
-  // on first load and whenever the hash changes while already on this page.
-  useEffect(() => {
-    const scrollToSection = () => {
-      const target = window.location.hash.split("?")[1];
-      if (!target) return;
-      requestAnimationFrame(() => {
-        document
-          .getElementById(target)
-          ?.scrollIntoView({ behavior: "smooth" });
-      });
-    };
-
-    scrollToSection();
-    window.addEventListener("hashchange", scrollToSection);
-    return () => window.removeEventListener("hashchange", scrollToSection);
-  }, []);
+const Portfolio = ({ chapterId }) => {
+  // /portfolio/<chapter> scrolls straight to that project chapter.
+  useScrollToSection(chapterId);
 
   return (
     <div className="bg-steel-500">
@@ -66,7 +51,7 @@ const Portfolio = () => {
                   {CHAPTERS.map((chapter, index) => (
                     <a
                       key={chapter.id}
-                      href={`#/portfolio?${chapter.id}`}
+                      href={`/portfolio/${chapter.id}`}
                       className="group flex items-center gap-2 rounded-full border border-steel-200 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-steel-700 transition-colors hover:border-steel-900 hover:bg-steel-900 hover:text-white"
                     >
                       <span className="text-brand-dark transition-colors group-hover:text-brand">

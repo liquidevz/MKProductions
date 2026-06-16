@@ -52,7 +52,7 @@ const SERVICES = [
 
 export const ServicesSection = () => {
   return (
-    <section className="bg-white text-steel-900">
+    <section id="services" className="scroll-mt-6 bg-white text-steel-900">
       <div className="mx-auto max-w-container-max px-margin-mobile py-20 md:px-margin-desktop md:py-28">
         <div className="mb-10 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
           <div>
@@ -69,7 +69,7 @@ export const ServicesSection = () => {
             </h2>
           </div>
           <motion.a
-            href="#contact"
+            href="/contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="whitespace-nowrap rounded-full bg-steel-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-xl transition-colors hover:bg-steel-800"
