@@ -32,45 +32,62 @@ const Contact = () => {
   }, []);
 
   return (
-    <div className="bg-steel-500">
+    <div className="bg-steel-700">
       <RoundedDrawerNav
         links={NAV_LINKS}
-        navBackground="bg-steel-500"
+        navBackground="bg-steel-700"
         bodyBackground="bg-white"
       >
         <section className="bg-white text-steel-900">
           <div className="mx-auto w-full max-w-container-max px-margin-mobile py-16 md:px-margin-desktop md:py-24">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
-              {/* Left — intro + contact details */}
-              <div>
-                <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-brand-dark">
-                  <span className="inline-block h-2 w-2 rounded-full bg-brand" />
-                  Get In Touch
-                </p>
-                <h1 className="font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
-                  <span className="block">Let's</span>
-                  <span className="block font-medium normal-case italic text-steel-500">
-                    make something<span className="text-brand-dark">.</span>
-                  </span>
-                </h1>
-                <p className="mt-7 max-w-md text-base leading-relaxed text-steel-600">
-                  Tell us about the shoot — expedition, campaign or film. We'll
-                  get back within one business day with availability and a
-                  tailored quote.
-                </p>
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-stretch lg:gap-6">
+              {/* Left — dark card matching form height */}
+              <div className="relative flex flex-col justify-between overflow-hidden rounded-3xl bg-steel-950 p-8 text-white md:p-10">
+                {/* Brand glow */}
+                <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-brand/15 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-20 -right-12 h-48 w-48 rounded-full bg-brand/8 blur-3xl" />
 
-                <div className="mt-10 space-y-5 border-t border-steel-200 pt-8">
+                {/* Top — label + heading + sub */}
+                <div className="relative">
+                  <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-brand">
+                    <span className="inline-block h-2 w-2 rounded-full bg-brand" />
+                    Get In Touch
+                  </p>
+                  <h1 className="font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+                    <span className="block text-white">Let's</span>
+                    <span className="block font-medium normal-case italic text-steel-400">
+                      make something<span className="text-brand">.</span>
+                    </span>
+                  </h1>
+                  <p className="mt-7 max-w-md text-base leading-relaxed text-steel-300">
+                    Tell us about the shoot — expedition, campaign or film. We'll
+                    get back within one business day with availability and a
+                    tailored quote.
+                  </p>
+                </div>
+
+                {/* Middle — decorative brand accent */}
+                <div className="relative my-8 flex items-center gap-5">
+                  <span className="h-px flex-1 bg-white/10" />
+                  <span className="font-display text-6xl font-extrabold leading-none text-brand/20 md:text-7xl">
+                    MK
+                  </span>
+                  <span className="h-px flex-1 bg-white/10" />
+                </div>
+
+                {/* Bottom — contact details */}
+                <div className="relative space-y-4">
                   {DETAILS.map(({ Icon, label, value, href }) => {
                     const content = (
                       <>
-                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-steel-100 text-lg text-steel-900">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/8 text-base text-brand ring-1 ring-white/10">
                           <Icon />
                         </span>
                         <span className="flex flex-col">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-steel-400">
+                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-steel-500">
                             {label}
                           </span>
-                          <span className="text-base font-semibold text-steel-900">
+                          <span className="text-sm font-semibold text-steel-200">
                             {value}
                           </span>
                         </span>
@@ -81,7 +98,7 @@ const Contact = () => {
                       <a
                         key={label}
                         href={href}
-                        className="group flex items-center gap-4 transition-opacity hover:opacity-70"
+                        className="flex items-center gap-4 transition-opacity hover:opacity-70"
                       >
                         {content}
                       </a>

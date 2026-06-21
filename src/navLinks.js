@@ -5,7 +5,7 @@ import { SERVICES } from "./servicesData";
 // `href` on a top-level link makes it a real navigation target (path route);
 // `sublinks` render as a hover dropdown.
 export const NAV_LINKS = [
-  { title: "Home", href: "/" },
+  { title: "About", href: "/about" },
   {
     title: "Services",
     href: "/services",

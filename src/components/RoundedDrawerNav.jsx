@@ -14,7 +14,7 @@ const isActiveRoute = (href, pathname) => {
 
 const RoundedDrawerNav = ({
   children,
-  navBackground = "bg-steel-500",
+  navBackground = "bg-steel-700",
   bodyBackground = "bg-white",
   links = [],
   // `position: sticky` breaks inside an `overflow-hidden` ancestor, so pages
@@ -58,7 +58,7 @@ const RoundedDrawerNav = ({
           </div>
           <a
             href="/contact"
-            className="hidden rounded-md bg-brand px-6 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-steel-900 transition-colors hover:bg-brand-dark md:block"
+            className="hidden rounded-full bg-brand px-7 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-steel-900 transition-colors hover:bg-brand-dark md:block"
           >
             Contact
           </a>
@@ -167,7 +167,7 @@ const MobileLinks = ({ links, open }) => {
           </div>
           <a
             href="/contact"
-            className="mt-6 block rounded-md bg-brand px-6 py-3 text-center text-xs font-bold uppercase tracking-[0.18em] text-steel-900 transition-colors hover:bg-brand-dark"
+            className="mt-6 block rounded-full bg-brand px-6 py-3 text-center text-xs font-bold uppercase tracking-[0.18em] text-steel-900 transition-colors hover:bg-brand-dark"
           >
             Contact
           </a>

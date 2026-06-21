@@ -4,9 +4,9 @@ const DURATION = 0.25;
 const STAGGER = 0.025;
 
 const SOCIALS = [
-  { label: "Behance", href: "https://behance.net" },
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "Facebook", href: "https://facebook.com" },
+  { label: "Behance", href: "https://www.behance.net/milindkale" },
+  { label: "Instagram", href: "https://www.instagram.com/mk__productions/" },
+  { label: "Facebook", href: "https://www.facebook.com/milind.kale.128917/" },
 ];
 
 export const RevealLinks = () => {

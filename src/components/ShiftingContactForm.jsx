@@ -1,17 +1,27 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import { SERVICES } from "../servicesData";
 
 const BASE_TRANSITION = { ease: "anticipate", duration: 0.75 };
+const SERVICE_OPTIONS = SERVICES.map((s) => s.title);
 
 // Brand-themed contact form. Designed to sit in a column (e.g. the right half
 // of the contact page) — it fills its container's width and shifts between two
 // steel shades as you toggle individual / company.
 const ShiftingContactForm = () => {
   const [selected, setSelected] = useState("individual");
-  return <Form selected={selected} setSelected={setSelected} />;
+  const [service, setService] = useState("");
+  return (
+    <Form
+      selected={selected}
+      setSelected={setSelected}
+      service={service}
+      setService={setService}
+    />
+  );
 };
 
-const Form = ({ selected, setSelected }) => {
+const Form = ({ selected, setSelected, service, setService }) => {
   const isCompany = selected === "company";
 
   return (
@@ -62,6 +72,29 @@ const Form = ({ selected, setSelected }) => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Service */}
+      <div className="mb-6">
+        <p className="mb-3 text-xl md:text-2xl">and I'm looking for...</p>
+        <div className="flex flex-wrap gap-2">
+          {SERVICE_OPTIONS.map((option) => (
+            <button
+              key={option}
+              type="button"
+              onClick={() => setService(option)}
+              className={`rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors duration-300 ${
+                service === option
+                  ? "bg-brand text-steel-900"
+                  : isCompany
+                  ? "bg-steel-950 text-white hover:bg-steel-800"
+                  : "bg-steel-800 text-white hover:bg-steel-600"
+              }`}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {/* Info */}
       <div className="mb-6">

@@ -6,6 +6,7 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
+import About from "./pages/About";
 import LoadingOverlay from "./components/LoadingOverlay";
 
 const getPath = () => window.location.pathname || "/";
@@ -68,6 +69,7 @@ function App() {
   const [page, param] = path.split("/").filter(Boolean);
 
   const renderPage = () => {
+    if (page === "about") return <About />;
     if (page === "portfolio") return <Portfolio chapterId={param} />;
     if (page === "contact") return <Contact />;
     if (page === "blog") return <Blog postId={param} />;

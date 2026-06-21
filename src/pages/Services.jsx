@@ -11,10 +11,10 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="bg-steel-500">
+    <div className="bg-steel-700">
       <RoundedDrawerNav
         links={NAV_LINKS}
-        navBackground="bg-steel-500"
+        navBackground="bg-steel-700"
         bodyBackground="bg-white"
       >
         <section className="bg-white text-steel-900">

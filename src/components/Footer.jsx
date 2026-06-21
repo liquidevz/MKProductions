@@ -4,10 +4,9 @@ import {
   FiPhone,
   FiMapPin,
   FiInstagram,
-  FiTwitter,
-  FiLinkedin,
-  FiYoutube,
+  FiFacebook,
 } from "react-icons/fi";
+import { SiBehance } from "react-icons/si";
 import Logo from "./Logo";
 import { NAV_LINKS } from "../navLinks";
 import { SERVICES } from "../servicesData";
@@ -23,10 +22,9 @@ const CONTACT = [
 ];
 
 const SOCIALS = [
-  { Icon: FiInstagram, label: "Instagram", href: "https://instagram.com" },
-  { Icon: FiTwitter, label: "Twitter", href: "https://twitter.com" },
-  { Icon: FiLinkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { Icon: FiYoutube, label: "YouTube", href: "https://youtube.com" },
+  { Icon: FiInstagram, label: "Instagram", href: "https://www.instagram.com/mk__productions/" },
+  { Icon: FiFacebook, label: "Facebook", href: "https://www.facebook.com/milind.kale.128917/" },
+  { Icon: SiBehance, label: "Behance", href: "https://www.behance.net/milindkale" },
 ];
 
 // Mirrors the navbar: a rounded panel inside the same steel frame. Rendered

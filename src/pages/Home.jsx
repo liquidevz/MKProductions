@@ -1,5 +1,6 @@
 import RoundedDrawerNav from "../components/RoundedDrawerNav";
 import Hero from "../components/Hero";
+import AboutSection from "../components/AboutSection";
 import ServicesSection from "../components/ServicesSection";
 import RibbonLogos from "../components/RibbonLogos";
 import BlogCarousel from "../components/BlogCarousel";
@@ -11,14 +12,15 @@ const Home = ({ scrollTo }) => {
   useScrollToSection(scrollTo);
 
   return (
-    <div className="bg-steel-500">
+    <div className="bg-steel-700">
       <RoundedDrawerNav
         links={NAV_LINKS}
-        navBackground="bg-steel-500"
+        navBackground="bg-steel-700"
         bodyBackground="bg-white"
       >
         <Hero />
         <RibbonLogos />
+        <AboutSection />
         <ServicesSection />
         <BlogCarousel />
       </RoundedDrawerNav>

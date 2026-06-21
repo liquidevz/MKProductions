@@ -17,10 +17,10 @@ const Blog = ({ postId }) => {
   }, [postId]);
 
   return (
-    <div className="bg-steel-500">
+    <div className="bg-steel-700">
       <RoundedDrawerNav
         links={NAV_LINKS}
-        navBackground="bg-steel-500"
+        navBackground="bg-steel-700"
         bodyBackground="bg-white"
       >
         <article className="bg-white text-steel-900">
@@ -69,19 +69,42 @@ const Blog = ({ postId }) => {
                   {active.description}
                 </p>
 
-                {active.content.map((paragraph, index) => (
-                  <p
-                    key={index}
-                    className="mb-6 text-lg leading-relaxed text-steel-700 md:text-xl"
-                  >
-                    {index === 0 ? (
-                      <span className="float-left mr-3 mt-1.5 font-display text-6xl font-extrabold leading-[0.7] text-brand-dark">
-                        {paragraph.charAt(0)}
-                      </span>
-                    ) : null}
-                    {index === 0 ? paragraph.slice(1) : paragraph}
-                  </p>
-                ))}
+                {(() => {
+                  // Content blocks beginning with "## " are markdown-style
+                  // headings; everything else is a paragraph. The drop-cap goes
+                  // on the first actual paragraph, even if a heading comes first.
+                  const firstParaIdx = active.content.findIndex(
+                    (block) => !block.startsWith("## ")
+                  );
+
+                  return active.content.map((block, index) => {
+                    if (block.startsWith("## ")) {
+                      return (
+                        <h2
+                          key={index}
+                          className="mb-4 mt-10 font-display text-2xl font-extrabold tracking-tight text-steel-900 first:mt-0 md:mt-14 md:text-3xl"
+                        >
+                          {block.replace(/^#{2,}\s+/, "")}
+                        </h2>
+                      );
+                    }
+
+                    const isFirstPara = index === firstParaIdx;
+                    return (
+                      <p
+                        key={index}
+                        className="mb-6 text-lg leading-relaxed text-steel-700 md:text-xl"
+                      >
+                        {isFirstPara ? (
+                          <span className="float-left mr-3 mt-1.5 font-display text-6xl font-extrabold leading-[0.7] text-brand-dark">
+                            {block.charAt(0)}
+                          </span>
+                        ) : null}
+                        {isFirstPara ? block.slice(1) : block}
+                      </p>
+                    );
+                  });
+                })()}
               </div>
 
               {/* Sidebar */}
