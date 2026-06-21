@@ -32,7 +32,7 @@ const Portfolio = ({ chapterId }) => {
                   <span className="inline-block h-2 w-2 rounded-full bg-brand" />
                   Selected Work
                 </p>
-                <h1 className="font-display text-6xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
+                <h1 className="font-display text-6xl font-extrabold uppercase leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
                   <span className="block">Our</span>
                   <span className="block font-medium normal-case italic text-steel-500">
                     Portfolio<span className="text-brand-dark">.</span>

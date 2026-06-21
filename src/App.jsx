@@ -1,16 +1,38 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence } from "motion/react";
 import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import Services from "./pages/Services";
+import ServiceDetail from "./pages/ServiceDetail";
+import LoadingOverlay from "./components/LoadingOverlay";
 
 const getPath = () => window.location.pathname || "/";
 
+// How long the loading veil stays up — a touch longer on first paint (a proper
+// splash), brief on in-app route changes so navigation stays snappy.
+const INITIAL_LOAD_MS = 1300;
+const ROUTE_LOAD_MS = 650;
+
 function App() {
   const [path, setPath] = useState(getPath);
+  const [loading, setLoading] = useState(true);
+  const [loadMs, setLoadMs] = useState(INITIAL_LOAD_MS);
+
+  // Whenever loading switches on, schedule it back off.
+  useEffect(() => {
+    if (!loading) return;
+    const timer = setTimeout(() => setLoading(false), loadMs);
+    return () => clearTimeout(timer);
+  }, [loading, loadMs]);
 
   useEffect(() => {
-    const sync = () => setPath(getPath());
+    const sync = () => {
+      setLoadMs(ROUTE_LOAD_MS);
+      setLoading(true);
+      setPath(getPath());
+    };
     window.addEventListener("popstate", sync);
 
     // Intercept clicks on internal links (href starting with "/") so they
@@ -29,6 +51,8 @@ function App() {
 
       e.preventDefault();
       if (href !== window.location.pathname) {
+        setLoadMs(ROUTE_LOAD_MS);
+        setLoading(true);
         window.history.pushState({}, "", href);
       }
       setPath(getPath());
@@ -43,11 +67,25 @@ function App() {
 
   const [page, param] = path.split("/").filter(Boolean);
 
-  if (page === "portfolio") return <Portfolio chapterId={param} />;
-  if (page === "contact") return <Contact />;
-  if (page === "blog") return <Blog postId={param} />;
-  if (page === "services") return <Home scrollTo="services" />;
-  return <Home />;
+  const renderPage = () => {
+    if (page === "portfolio") return <Portfolio chapterId={param} />;
+    if (page === "contact") return <Contact />;
+    if (page === "blog") return <Blog postId={param} />;
+    if (page === "services") {
+      // /services → overview; /services/<slug> → individual service page.
+      return param ? <ServiceDetail slug={param} /> : <Services />;
+    }
+    return <Home />;
+  };
+
+  return (
+    <>
+      <AnimatePresence>
+        {loading && <LoadingOverlay key="loading-overlay" />}
+      </AnimatePresence>
+      {renderPage()}
+    </>
+  );
 }
 
 export default App;

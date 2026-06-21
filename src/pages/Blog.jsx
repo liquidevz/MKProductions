@@ -47,7 +47,7 @@ const Blog = ({ postId }) => {
                   <span className="inline-block h-2 w-2 rounded-full bg-brand" />
                   {active.category}
                 </p>
-                <h1 className="font-display text-3xl font-black uppercase leading-[1.03] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+                <h1 className="font-display text-3xl font-extrabold uppercase leading-[1.03] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                   {active.title}
                 </h1>
                 <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-bold uppercase tracking-[0.16em] text-white/70">
@@ -75,7 +75,7 @@ const Blog = ({ postId }) => {
                     className="mb-6 text-lg leading-relaxed text-steel-700 md:text-xl"
                   >
                     {index === 0 ? (
-                      <span className="float-left mr-3 mt-1.5 font-display text-6xl font-black leading-[0.7] text-brand-dark">
+                      <span className="float-left mr-3 mt-1.5 font-display text-6xl font-extrabold leading-[0.7] text-brand-dark">
                         {paragraph.charAt(0)}
                       </span>
                     ) : null}

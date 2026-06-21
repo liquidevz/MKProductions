@@ -47,7 +47,7 @@ const Contact = () => {
                   <span className="inline-block h-2 w-2 rounded-full bg-brand" />
                   Get In Touch
                 </p>
-                <h1 className="font-display text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+                <h1 className="font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
                   <span className="block">Let's</span>
                   <span className="block font-medium normal-case italic text-steel-500">
                     make something<span className="text-brand-dark">.</span>

@@ -1,12 +1,20 @@
 import BLOG_POSTS from "./blogPosts.json";
+import { SERVICES } from "./servicesData";
 
 // Shared top-nav configuration used by every page.
 // `href` on a top-level link makes it a real navigation target (path route);
 // `sublinks` render as a hover dropdown.
 export const NAV_LINKS = [
   { title: "Home", href: "/" },
-  // Services lives on the home page — /services renders Home and scrolls to it.
-  { title: "Services", href: "/services" },
+  {
+    title: "Services",
+    href: "/services",
+    // Each service opens its own detail page.
+    sublinks: SERVICES.map((service) => ({
+      title: service.title,
+      href: `/services/${service.slug}`,
+    })),
+  },
   {
     title: "Portfolio",
     href: "/portfolio",

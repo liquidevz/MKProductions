@@ -39,25 +39,25 @@ const Hero = () => {
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[1.15fr_auto_0.55fr] md:gap-8 lg:gap-12">
           {/* Left — intro, headline, copy, CTA */}
           <div className="order-2 flex flex-col items-start md:order-1">
-            <p className="mb-5 text-sm font-semibold tracking-wide text-steel-600">
-              Hey, we're{" "}
-              <span className="font-bold text-steel-900">MK Productions</span>,
+            <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-brand-dark">
+              <span className="inline-block h-2 w-2 rounded-full bg-brand" />
+              Photography &amp; Cinematography
             </p>
 
-            <h1 className="font-display text-5xl font-black uppercase leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
-              <span className="block">Capturing</span>
+            <h1 className="font-display text-[2.75rem] font-extrabold uppercase leading-[0.9] tracking-tight sm:text-6xl lg:text-7xl">
+              <span className="block">We Shoot</span>
               <span className="block font-medium normal-case italic text-steel-500">
-                &amp; Defining
+                stories worth
               </span>
               <span className="block">
-                Visions<span className="text-brand-dark">.</span>
+                Remembering<span className="text-brand-dark">.</span>
               </span>
             </h1>
 
-            <p className="mt-7 max-w-md text-base leading-relaxed text-steel-600">
-              Transforming moments into stunning visuals — photography and
-              cinematography that captivates, engages, and delivers your story
-              with clarity and soul.
+            <p className="mt-6 max-w-md text-base leading-relaxed text-steel-600">
+              A photography and cinematography studio crafting bold, cinematic
+              visuals — directed, shot and finished in-house, from the first
+              frame to the final cut.
             </p>
 
             <a
@@ -99,17 +99,17 @@ const Hero = () => {
           </div>
 
           {/* Right — stats column */}
-          <div className="order-3 flex flex-row flex-wrap justify-between gap-6 md:flex-col md:items-end md:gap-0 md:divide-y md:divide-steel-200">
+          <div className="order-3 grid grid-cols-2 gap-x-6 gap-y-7 md:flex md:flex-col md:items-end md:gap-0 md:divide-y md:divide-steel-200">
             {STATS.map((stat) => (
               <div
                 key={stat.label}
                 className="flex flex-col items-start gap-1 md:items-end md:py-5 md:first:pt-0 md:last:pb-0"
               >
-                <span className="font-display text-3xl font-bold text-steel-900 lg:text-4xl">
+                <span className="font-display text-4xl font-bold leading-none text-steel-900 lg:text-[2.75rem]">
                   {stat.value}
                   <span className="text-brand-dark">.</span>
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-steel-500">
+                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-steel-500 md:text-right">
                   {stat.label}
                 </span>
               </div>
@@ -118,20 +118,48 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Services strip */}
-      <div className="mt-10 border-t-2 border-steel-200 bg-steel-100 md:mt-8">
-        <div className="mx-auto grid w-full max-w-container-max grid-cols-1 divide-y divide-steel-200 px-margin-mobile sm:grid-cols-2 sm:divide-y-0 md:px-margin-desktop lg:grid-cols-4 lg:divide-x">
-          {SERVICES.map((service) => (
-            <div key={service.title} className="px-0 py-7 lg:px-7 lg:first:pl-0 lg:last:pr-0">
-              <h3 className="mb-2 flex items-center gap-2.5 text-xs font-extrabold uppercase tracking-[0.14em] text-steel-900">
-                <span className="h-2 w-2 shrink-0 bg-brand" />
-                {service.title}
-              </h3>
-              <p className="text-xs leading-relaxed text-steel-500">
-                {service.description}
+      {/* Services strip — editorial grid */}
+      <div className="mt-12 border-t-2 border-steel-200 bg-steel-100 md:mt-16">
+        <div className="mx-auto w-full max-w-container-max px-margin-mobile py-9 md:px-margin-desktop md:py-14">
+          {/* Strip header */}
+          <div className="mb-7 flex items-end justify-between gap-4">
+            <div>
+              <p className="mb-2 flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.28em] text-brand-dark">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand" />
+                What We Shoot
               </p>
+              <h2 className="font-display text-xl font-extrabold uppercase leading-[1.05] tracking-tight text-steel-900 sm:text-2xl">
+                Disciplines we live in
+              </h2>
             </div>
-          ))}
+            <a
+              href="/services"
+              className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.18em] text-steel-700 transition-colors hover:text-steel-900"
+            >
+              <span className="hidden sm:inline">All services</span>
+              <HiOutlineArrowLongRight className="text-lg text-brand-dark transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
+
+          {/* Items — 2-col on mobile, 4-col on desktop */}
+          <div className="grid grid-cols-2 gap-x-5 gap-y-7 lg:grid-cols-4 lg:gap-x-8">
+            {SERVICES.map((service, index) => (
+              <div
+                key={service.title}
+                className="group border-t border-steel-300 pt-4 transition-colors hover:border-brand"
+              >
+                <span className="font-display text-xs font-bold tracking-[0.1em] text-brand-dark">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-2 font-display text-sm font-bold uppercase leading-tight tracking-tight text-steel-900 sm:text-base lg:text-lg">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-steel-500 lg:text-sm">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

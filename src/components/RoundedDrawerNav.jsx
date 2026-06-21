@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { FiMenu } from "react-icons/fi";
 import Logo from "./Logo";
+import Footer from "./Footer";
 
 // A top link is active when the current path matches its href — exactly for
 // "/", or as a prefix for nested routes (e.g. /portfolio/automotive → Portfolio).
@@ -79,6 +80,7 @@ const RoundedDrawerNav = ({
         >
           {children}
         </div>
+        <Footer />
       </motion.main>
     </>
   );

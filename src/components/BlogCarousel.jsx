@@ -50,7 +50,7 @@ const BlogCarousel = ({
                 <span className="inline-block h-2 w-2 rounded-full bg-brand" />
                 {eyebrow}
               </p>
-              <h2 className="font-display text-4xl font-black uppercase tracking-tight text-steel-900 md:text-6xl">
+              <h2 className="font-display text-4xl font-extrabold uppercase tracking-tight text-steel-900 md:text-6xl">
                 {title}
               </h2>
             </div>

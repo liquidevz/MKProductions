@@ -4,35 +4,24 @@ const DURATION = 0.25;
 const STAGGER = 0.025;
 
 const SOCIALS = [
-  // Positioned to form a plus/cross on md+ screens.
-  { label: "Twitter", href: "https://twitter.com", place: "md:col-start-2 md:row-start-1" },
-  { label: "Linkedin", href: "https://linkedin.com", place: "md:col-start-1 md:row-start-2" },
-  { label: "Facebook", href: "https://facebook.com", place: "md:col-start-3 md:row-start-2" },
-  { label: "Instagram", href: "https://instagram.com", place: "md:col-start-2 md:row-start-3" },
+  { label: "Behance", href: "https://behance.net" },
+  { label: "Instagram", href: "https://instagram.com" },
+  { label: "Facebook", href: "https://facebook.com" },
 ];
 
 export const RevealLinks = () => {
   return (
-    <section className="bg-steel-900 px-margin-mobile py-28 text-white md:px-margin-desktop md:py-40">
-      <div className="mx-auto max-w-container-max">
-        <p className="mb-12 flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-brand md:mb-20">
-          <span className="inline-block h-2 w-2 rounded-full bg-brand" />
-          Follow Along
-        </p>
-
-        <div className="grid grid-cols-1 place-items-center gap-1 md:grid-cols-3 md:gap-x-2 md:gap-y-1">
-          {SOCIALS.map((social) => (
-            <FlipLink key={social.label} href={social.href} className={social.place}>
-              {social.label}
-            </FlipLink>
-          ))}
-        </div>
-      </div>
+    <section className="grid place-content-center gap-2 bg-steel-900 px-8 py-24 text-white md:py-32">
+      {SOCIALS.map((social) => (
+        <FlipLink key={social.label} href={social.href}>
+          {social.label}
+        </FlipLink>
+      ))}
     </section>
   );
 };
 
-const FlipLink = ({ children, href, className = "" }) => {
+const FlipLink = ({ children, href }) => {
   return (
     <motion.a
       initial="initial"
@@ -40,7 +29,7 @@ const FlipLink = ({ children, href, className = "" }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`relative block overflow-hidden whitespace-nowrap font-display text-4xl font-black uppercase leading-none sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl ${className}`}
+      className="relative block overflow-hidden whitespace-nowrap font-display text-4xl font-extrabold uppercase leading-none sm:text-7xl md:text-8xl lg:text-9xl"
       style={{ lineHeight: 0.75 }}
     >
       {/* Resting copy (white) */}
