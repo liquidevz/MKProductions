@@ -71,8 +71,8 @@ const RoundedDrawerNav = ({
           navHoverRef.current = false;
           setHovered(null);
         }}
-        className={`sticky top-2 z-50 mx-2 mt-2 rounded-2xl transition-transform duration-300 ease-out ${
-          hidden ? "-translate-y-[150%]" : "translate-y-0"
+        className={`sticky top-0 z-50 transition-transform duration-300 ease-out ${
+          hidden ? "-translate-y-full" : "translate-y-0"
         } ${navBackground} px-4 py-4 md:px-6`}
       >
         <div className="flex items-start justify-between">
@@ -102,7 +102,7 @@ const RoundedDrawerNav = ({
         </div>
         <MobileLinks links={links} open={mobileNavOpen} />
       </nav>
-      <motion.main layout className={`${navBackground} px-2 pb-2 pt-2`}>
+      <motion.main layout className={`${navBackground} px-2 pb-2`}>
         <div
           className={`${bodyBackground} rounded-3xl ${
             clipBody ? "overflow-hidden" : ""

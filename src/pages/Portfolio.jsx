@@ -57,16 +57,6 @@ const Portfolio = ({ chapterId }) => {
     window.scrollTo(0, 0);
   }, [tab, category]);
 
-  // Lock background scroll while the full-screen mobile shorts overlay is open.
-  useEffect(() => {
-    if (!(isMobile && tab === "shorts")) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [isMobile, tab]);
-
   const filterByCategory = (list) =>
     category === "all"
       ? list
@@ -171,26 +161,10 @@ const Portfolio = ({ chapterId }) => {
           </div>
         </section>
 
-        {/* Active tab (desktop shorts inline; mobile shorts overlay is a
-            sibling below so `fixed` covers the whole screen) */}
+        {/* Active tab — both render inline so the portfolio header stays above */}
         {tab === "videos" && <VideoParallaxContent videos={videos} />}
-        {tab === "shorts" && !isMobile && (
-          <ShortsFeed shorts={shorts} isMobile={false} />
-        )}
+        {tab === "shorts" && <ShortsFeed shorts={shorts} isMobile={isMobile} />}
       </RoundedDrawerNav>
-
-      {/* Mobile shorts — full-screen overlay */}
-      {tab === "shorts" && isMobile && (
-        <ShortsFeed
-          shorts={shorts}
-          isMobile
-          tab={tab}
-          setTab={setTab}
-          chapters={CATEGORY_OPTIONS}
-          category={category}
-          setCategory={setCategory}
-        />
-      )}
     </div>
   );
 };

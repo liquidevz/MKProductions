@@ -67,6 +67,25 @@ const ScrollAutoplayVideo = ({
   const [muted, setMuted] = useState(true);
   const [progress, setProgress] = useState(0);
   const [useHq, setUseHq] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Track fullscreen state (works for the element we requested it on).
+  useEffect(() => {
+    const onChange = () =>
+      setIsFullscreen(document.fullscreenElement === wrapRef.current);
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    const el = wrapRef.current;
+    if (!el) return;
+    if (document.fullscreenElement) {
+      document.exitFullscreen?.();
+    } else {
+      (el.requestFullscreen || el.webkitRequestFullscreen)?.call(el);
+    }
+  };
 
   // Play only while on screen.
   useEffect(() => {
@@ -264,6 +283,14 @@ const ScrollAutoplayVideo = ({
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15 text-base text-white backdrop-blur transition-colors hover:bg-brand hover:text-steel-900"
           >
             {muted ? <FiVolumeX /> : <FiVolume2 />}
+          </button>
+          <button
+            type="button"
+            onClick={toggleFullscreen}
+            aria-label={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15 text-base text-white backdrop-blur transition-colors hover:bg-brand hover:text-steel-900"
+          >
+            {isFullscreen ? <FiMinimize /> : <FiMaximize />}
           </button>
         </div>
       )}
