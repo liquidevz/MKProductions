@@ -8,6 +8,7 @@ import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import About from "./pages/About";
 import LoadingOverlay from "./components/LoadingOverlay";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 const getPath = () => window.location.pathname || "/";
 
@@ -86,6 +87,8 @@ function App() {
         {loading && <LoadingOverlay key="loading-overlay" />}
       </AnimatePresence>
       {renderPage()}
+      {/* Floating WhatsApp enquiry — present on every page */}
+      <WhatsAppButton />
     </>
   );
 }

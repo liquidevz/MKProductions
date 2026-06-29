@@ -18,11 +18,11 @@ export const NAV_LINKS = [
   {
     title: "Portfolio",
     href: "/portfolio",
-    // Each project jumps straight to its chapter on the portfolio page.
+    // The three portfolio chapters — filter the work by discipline.
     sublinks: [
       { title: "Expeditions", href: "/portfolio/expeditions" },
       { title: "Automotive", href: "/portfolio/automotive" },
-      { title: "Cinematography", href: "/portfolio/cinematography" },
+      { title: "Industrial", href: "/portfolio/industrial" },
     ],
   },
   {

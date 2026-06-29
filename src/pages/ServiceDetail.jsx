@@ -8,7 +8,6 @@ import {
   FiCheck,
 } from "react-icons/fi";
 import RoundedDrawerNav from "../components/RoundedDrawerNav";
-import WhatsAppButton from "../components/WhatsAppButton";
 import StickyServiceCards from "../components/StickyServiceCards";
 import { NAV_LINKS } from "../navLinks";
 import { SERVICES, getService } from "../servicesData";
@@ -331,9 +330,6 @@ const ServiceDetail = ({ slug }) => {
           </div>
         </section>
       </RoundedDrawerNav>
-
-      {/* Floating WhatsApp enquiry — service pre-selected */}
-      <WhatsAppButton defaultService={service.title} />
     </div>
   );
 };

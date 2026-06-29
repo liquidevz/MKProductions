@@ -61,7 +61,7 @@ const WhatsAppButton = ({ defaultService = "" }) => {
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             onSubmit={sendToWhatsApp}
-            className="fixed bottom-24 right-4 z-[70] flex max-h-[80vh] w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-3xl bg-steel-900 text-white shadow-2xl ring-1 ring-white/10 md:right-6"
+            className="fixed bottom-24 right-4 z-[55] flex max-h-[80vh] w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-3xl bg-steel-900 text-white shadow-2xl ring-1 ring-white/10 md:right-6"
           >
             {/* Header */}
             <div className="flex items-center justify-between gap-3 bg-[#25D366] px-5 py-4 text-steel-900">
@@ -211,7 +211,7 @@ const WhatsAppButton = ({ defaultService = "" }) => {
         onClick={() => setOpen((v) => !v)}
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.94 }}
-        className="fixed bottom-5 right-4 z-[70] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-2xl text-white shadow-xl ring-4 ring-[#25D366]/20 transition-colors hover:bg-[#1ebe5b] md:right-6 md:h-16 md:w-16"
+        className="fixed bottom-5 right-4 z-[55] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-2xl text-white shadow-xl ring-4 ring-[#25D366]/20 transition-colors hover:bg-[#1ebe5b] md:right-6 md:h-16 md:w-16"
       >
         <AnimatePresence mode="wait" initial={false}>
           {open ? (

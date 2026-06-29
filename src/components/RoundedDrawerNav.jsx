@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { FiMenu } from "react-icons/fi";
 import Logo from "./Logo";
@@ -23,6 +23,28 @@ const RoundedDrawerNav = ({
 }) => {
   const [hovered, setHovered] = useState(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  // Pointer over the nav — never hide it while the user is interacting with it.
+  const navHoverRef = useRef(false);
+
+  // Hide the nav on scroll-down, reveal it on scroll-up. Never hide while the
+  // mobile menu is open, the pointer is over the nav, or near the top.
+  useEffect(() => {
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (mobileNavOpen || navHoverRef.current || y < 80) {
+        setHidden(false);
+      } else if (y > last + 10) {
+        setHidden(true);
+      } else if (y < last - 10) {
+        setHidden(false);
+      }
+      last = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [mobileNavOpen]);
 
   const activeSublinks = useMemo(() => {
     if (!hovered) return [];
@@ -42,8 +64,16 @@ const RoundedDrawerNav = ({
   return (
     <>
       <nav
-        onMouseLeave={() => setHovered(null)}
-        className={`${navBackground} px-4 py-4 md:px-6`}
+        onMouseEnter={() => {
+          navHoverRef.current = true;
+        }}
+        onMouseLeave={() => {
+          navHoverRef.current = false;
+          setHovered(null);
+        }}
+        className={`sticky top-2 z-50 mx-2 mt-2 rounded-2xl transition-transform duration-300 ease-out ${
+          hidden ? "-translate-y-[150%]" : "translate-y-0"
+        } ${navBackground} px-4 py-4 md:px-6`}
       >
         <div className="flex items-start justify-between">
           <div className="flex items-start">
@@ -72,7 +102,7 @@ const RoundedDrawerNav = ({
         </div>
         <MobileLinks links={links} open={mobileNavOpen} />
       </nav>
-      <motion.main layout className={`${navBackground} px-2 pb-2`}>
+      <motion.main layout className={`${navBackground} px-2 pb-2 pt-2`}>
         <div
           className={`${bodyBackground} rounded-3xl ${
             clipBody ? "overflow-hidden" : ""
