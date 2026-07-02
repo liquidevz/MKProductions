@@ -3,7 +3,7 @@ import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import heroImage from "/hero-photographer.png";
 
 const STATS = [
-  { value: "8+", label: "Years Experience" },
+  { value: "10+", label: "Years Experience" },
   { value: "350+", label: "Projects Delivered" },
   { value: "99%", label: "Client Satisfaction" },
   { value: "60+", label: "Brands Worldwide" },

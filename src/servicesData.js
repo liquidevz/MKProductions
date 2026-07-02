@@ -63,12 +63,12 @@ export const SERVICES = [
       },
       {
         Icon: FiUser,
-        title: "Portraiture",
+        title: "Light Painting",
         copy: "Studio and environmental portraits with character and craft.",
       },
       {
         Icon: FiAperture,
-        title: "On-location & Studio",
+        title: "Advertising Campaigns",
         copy: "Fully lit studio control or run-and-gun on any location.",
       },
     ],
@@ -275,6 +275,12 @@ export const SERVICES = [
         title: "VFX & Finishing",
         copy: "Cleanups, titles, motion graphics and final delivery.",
       },
+      {
+        Icon: FiZap,
+        title: "AI Video Generation",
+        copy: "Generative-video prototyping, style transfer and hybrid finishing.",
+      },
+      
     ],
     process: [
       { title: "Assembly", copy: "Selects, structure and first cut." },

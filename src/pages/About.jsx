@@ -32,10 +32,10 @@ const STRIP = [
 ];
 
 const STATS = [
-  { value: "8+", label: "Years Behind the Lens" },
+  { value: "10+", label: "Years Behind the Lens" },
   { value: "350+", label: "Projects Delivered" },
   { value: "60+", label: "Brands Worldwide" },
-  { value: "24,000 km", label: "On the Road" },
+  // { value: "24,000 km", label: "On the Road" },
 ];
 
 const VALUES = [

@@ -36,10 +36,10 @@ const VARIANTS = {
     ],
   },
   process: {
-    intro: "bg-brand text-steel-900",
-    introEyebrow: "text-steel-900",
-    introDot: "bg-steel-900",
-    introCopy: "text-steel-800",
+    intro: "bg-steel-950 text-white",
+    introEyebrow: "text-brand",
+    introDot: "bg-brand",
+    introCopy: "text-steel-300",
     items: [
       {
         bg: "bg-steel-950 text-white",
