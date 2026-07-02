@@ -8,20 +8,23 @@ import ScrollAutoplayVideo from "./ScrollAutoplayVideo";
 //  • Desktop → 9:16 cards with their info alongside, alternating sides.
 const ShortsFeed = ({ shorts = [], isMobile }) => {
   if (isMobile) {
+    // A snap-scroll feed: one short fills the screen, scrolling snaps to the
+    // next (YouTube-shorts style). Lives inline after the portfolio header,
+    // so the header is still visible above it.
     return (
-      <div className="bg-steel-950">
+      <div className="h-[100dvh] snap-y snap-mandatory overflow-y-auto overscroll-y-contain bg-steel-950">
         {shorts.map((short) => (
           <section
             key={short.id}
             id={short.id}
-            className="relative h-[100svh] w-full"
+            className="relative h-[100dvh] w-full snap-start snap-always"
           >
             <ScrollAutoplayVideo
               youtubeId={short.youtubeId}
               title={short.title}
               mode="contain"
               aspect="9/16"
-              threshold={0.6}
+              threshold={0.55}
               className="h-full w-full"
             />
             {/* Info — sits above the control bar */}

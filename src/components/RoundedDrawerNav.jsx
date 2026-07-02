@@ -4,6 +4,13 @@ import { FiMenu } from "react-icons/fi";
 import Logo from "./Logo";
 import Footer from "./Footer";
 
+// Frame-coloured concave corners (a quarter-circle bitten out of the frame
+// colour) so the body reads as rounded where it meets the nav — at any scroll.
+const CORNER_TL =
+  "radial-gradient(circle at 100% 100%, transparent 23px, #464645 24px)";
+const CORNER_TR =
+  "radial-gradient(circle at 0% 100%, transparent 23px, #464645 24px)";
+
 // A top link is active when the current path matches its href — exactly for
 // "/", or as a prefix for nested routes (e.g. /portfolio/automotive → Portfolio).
 const isActiveRoute = (href, pathname) => {
@@ -26,6 +33,28 @@ const RoundedDrawerNav = ({
   const [hidden, setHidden] = useState(false);
   // Pointer over the nav — never hide it while the user is interacting with it.
   const navHoverRef = useRef(false);
+  // Collapsed nav height, so the rounded corners sit at its bottom edge. We
+  // measure the base bar (first child) so the expanding menu doesn't move them.
+  const navRef = useRef(null);
+  const [navHeight, setNavHeight] = useState(64);
+
+  useEffect(() => {
+    // Measure at mount / font-load / resize only (dropdown closed at those
+    // times) so the height stays collapsed; the expanded nav then just covers
+    // the corners rather than dragging them down.
+    const measure = () => {
+      const bar = navRef.current?.firstElementChild;
+      if (bar) setNavHeight(bar.getBoundingClientRect().height + 32);
+    };
+    measure();
+    const raf = requestAnimationFrame(measure);
+    window.addEventListener("resize", measure);
+    if (document.fonts?.ready) document.fonts.ready.then(measure).catch(() => {});
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
 
   // Hide the nav on scroll-down, reveal it on scroll-up. Never hide while the
   // mobile menu is open, the pointer is over the nav, or near the top.
@@ -64,6 +93,7 @@ const RoundedDrawerNav = ({
   return (
     <>
       <nav
+        ref={navRef}
         onMouseEnter={() => {
           navHoverRef.current = true;
         }}
@@ -112,6 +142,24 @@ const RoundedDrawerNav = ({
         </div>
         <Footer />
       </motion.main>
+
+      {/* Rounded corners pinned to the nav's bottom edge (viewport top when it
+          hides). Fixed — so the transformed <main> can't break it — and z-40,
+          so the nav (z-50) hides them when its dropdown/menu expands. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-x-0 z-40 transition-[top] duration-300 ease-out"
+        style={{ top: hidden ? 0 : navHeight }}
+      >
+        <span
+          className="absolute left-2 top-0 h-6 w-6"
+          style={{ background: CORNER_TL }}
+        />
+        <span
+          className="absolute right-2 top-0 h-6 w-6"
+          style={{ background: CORNER_TR }}
+        />
+      </div>
     </>
   );
 };

@@ -8,6 +8,7 @@ import {
   FiHeart,
 } from "react-icons/fi";
 import RoundedDrawerNav from "../components/RoundedDrawerNav";
+import FounderStory from "../components/FounderStory";
 import { NAV_LINKS } from "../navLinks";
 
 // Staggered film-strip imagery for the header.
@@ -58,12 +59,6 @@ const VALUES = [
     title: "Built to Last",
     copy: "We protect our craft — and our clients' stories — like they're irreplaceable.",
   },
-];
-
-const STORY = [
-  "MK Productions began with a single camera and an appetite for the road. What started as a way to document our own expeditions grew into a studio trusted by brands to capture the moments that matter most.",
-  "Over 24,000 kilometers, six countries and countless freezing sunrises later, our philosophy hasn't changed: show up, stay patient and let the story reveal itself. Whether we're flying a drone over the Tibetan plateau or lighting a product on a studio table, the craft is the same.",
-  "Today we shoot, direct, fly and finish every project in-house — a small team obsessed with light, motion and the kind of detail you only notice when it's missing.",
 ];
 
 const About = () => {
@@ -145,30 +140,47 @@ const About = () => {
           <div className="h-24 md:h-28" />
         </section>
 
-        {/* Story */}
-        <section className="border-t border-steel-200 bg-white text-steel-900">
-          <div className="mx-auto grid w-full max-w-container-max grid-cols-1 gap-10 px-margin-mobile py-16 md:px-margin-desktop md:py-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-            <div>
-              <p className="mb-3 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-brand-dark">
-                <span className="inline-block h-2 w-2 rounded-full bg-brand" />
-                Our Story
-              </p>
-              <h2 className="max-w-sm font-display text-3xl font-extrabold uppercase leading-[1.05] tracking-tight md:text-4xl">
-                From the road
-                <span className="font-medium normal-case italic text-steel-400">
-                  {" "}to the screen
-                </span>
-              </h2>
-            </div>
-            <div className="space-y-5">
-              {STORY.map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="text-base leading-relaxed text-steel-600 md:text-lg"
-                >
-                  {paragraph}
+        {/* Founder's story timeline */}
+        <FounderStory />
+
+        {/* Harsh conditions band */}
+        <section className="relative overflow-hidden bg-steel-950 text-white">
+          <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand/10 blur-3xl" />
+          <div className="relative mx-auto w-full max-w-container-max px-margin-mobile py-16 md:px-margin-desktop md:py-20">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center lg:gap-16">
+              <div>
+                <p className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-brand">
+                  <span className="inline-block h-2 w-2 rounded-full bg-brand" />
+                  Field-Tested
                 </p>
-              ))}
+                <h2 className="font-display text-3xl font-extrabold uppercase leading-[1.05] tracking-tight md:text-5xl">
+                  From the Amazon rainforest to the Sahara desert
+                  <span className="font-medium normal-case italic text-steel-400">
+                    {" "}to Siberian winters.
+                  </span>
+                </h2>
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-steel-300 md:text-lg">
+                  We've worked in some of the harshest conditions on earth —
+                  from blistering desert heat to deep sub-zero cold — and brought
+                  the story home from every one of them.
+                </p>
+              </div>
+
+              {/* Temperature range */}
+              <div className="rounded-3xl bg-white/5 p-7 ring-1 ring-white/10 md:p-8">
+                <div className="flex items-end justify-between gap-4">
+                  <span className="font-display text-4xl font-extrabold leading-none text-brand md:text-6xl">
+                    +50°
+                  </span>
+                  <span className="font-display text-4xl font-extrabold leading-none text-white md:text-6xl">
+                    −50°
+                  </span>
+                </div>
+                <div className="mt-4 h-2 w-full rounded-full bg-gradient-to-r from-brand via-steel-400 to-white" />
+                <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-steel-400">
+                  Operating temperature range
+                </p>
+              </div>
             </div>
           </div>
         </section>
